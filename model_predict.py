@@ -8,8 +8,8 @@ import numpy as np
 from PIL import Image
 from io import BytesIO
 
-# model = ResNet50(weights='imagenet')
-model = VGG16(weights='imagenet')
+model = ResNet50(weights='imagenet')
+model2 = VGG16(weights='imagenet')
 
 def read_image(file) -> Image.Image:
     pil_image = Image.open(BytesIO(file))

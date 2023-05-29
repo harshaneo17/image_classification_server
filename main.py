@@ -20,7 +20,7 @@ async def create_file(file: bytes = File(...)):
     
 
 
-@app.post("/uploadfile/")
+@app.get("/uploadfile/")
 async def main(file: bytes = File(...)):
 
     # read image
