@@ -28,8 +28,8 @@ def transform(file) -> Image.Image:
     img = np.asarray(file.resize((224, 224)))[..., :3] #loads the image in standard 
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
-    y = x.copy()
-    x , y = preprocess_input(x),preprocess_input2(y) #uses different
+    y = x.copy() 
+    x , y = preprocess_input(x),preprocess_input2(y) #uses different preprocess methods for each model
     preds = model.predict(x)
     preds2 = model2.predict(y)
     averaged_predictions = np.mean([preds, preds2], axis=0) #ensemble methods with average of two predictions
