@@ -18,7 +18,7 @@ The API can be tested by running the uvicorn command and going to /docs page in 
 
 example: 
     
-    (http://127.0.0.1:8000/docs) 
+    http://127.0.0.1:8000/docs 
     
 The two models used in this API are not trained on custom dataset. They use imagenet weights to make predictions and give results. 
 Ensemble model uses the average of predictions from both models. The images were pre processed using respective preprocess methods for vgg16 and resnet50 models.
