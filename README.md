@@ -1,6 +1,6 @@
 # Image Classification Server
-A ML API that serves image classification model with FastAPI
-This API serves the ensemble model's result. The API can be tested by running the uvicorn command and going to /docs page in the URL bar
+A ML API that serves image classification model with FastAPI.
+This API serves the ensemble model's result.
 
 USAGE
     
