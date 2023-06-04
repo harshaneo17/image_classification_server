@@ -1,3 +1,8 @@
+import numpy as np
+from PIL import Image
+from io import BytesIO
+import logging as log
+
 import tensorflow
 from tensorflow.keras.applications.resnet50 import ResNet50
 from tensorflow.keras.applications.vgg16 import VGG16, decode_predictions
@@ -5,10 +10,6 @@ from tensorflow.keras.applications.vgg16 import preprocess_input as vgg16_prepro
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input as resnet50_preprocess_input
 from tensorflow.keras.applications.resnet50 import decode_predictions as decode_predictions2
-import numpy as np
-from PIL import Image
-from io import BytesIO
-import logging as log
 
 # sets the basic logging level as info
 log.basicConfig(level=log.INFO)
@@ -30,8 +31,8 @@ def transform(file) -> Image.Image:
     Returns the decoded prediction of ensemble algorithms """
 
     # loads the image in standard
-    img = np.asinput(file.resize((224, 224)))[..., :3]
-    vgg16_image_input = image.img_to_input(img)
+    img = np.asarray(file.resize((224, 224)))[..., :3]
+    vgg16_image_input = image.img_to_array(img)
     vgg16_image_input = np.expand_dims(vgg16_image_input, axis=0)
 
     # Copy same image for use with resnet50 model
