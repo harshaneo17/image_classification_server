@@ -9,7 +9,7 @@ from tensorflow.keras.applications.vgg16 import VGG16, decode_predictions
 from tensorflow.keras.applications.vgg16 import preprocess_input as vgg16_preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input as resnet50_preprocess_input
-from tensorflow.keras.applications.resnet50 import decode_predictions as decode_predictions2
+from tensorflow.keras.applications.resnet50 import decode_predictions as resnet50_decode_predictions
 
 # sets the basic logging level as info
 log.basicConfig(level=log.INFO)
@@ -48,8 +48,12 @@ def transform(file) -> Image.Image:
     # ensemble methods with average of two predictions
     averaged_predictions = np.mean([vgg16_prediction, resnet50_prediction], axis=0)
 
+    log.info(f'VGG16 Predicted:{decode_predictions(vgg16_prediction, top=1)[0]}')
+    log.info(f'Resnet50 predicted:{resnet50_decode_predictions(resnet50_prediction, top=1)[0]}')
+
     # RS - Is decode_predictions2 not needed here? Is it just the decode_predictions from vgg16 that's needed?
-    log.info(f'Predicted:{decode_predictions(averaged_predictions, top=1)[0]}')
+    log.info(f'Average prediction:{decode_predictions(averaged_predictions, top=1)[0]}')
+
     result = decode_predictions(averaged_predictions, 1)[0]
 
     return result
@@ -59,6 +63,7 @@ def resultsjson(listobject) -> list:
     """ This function takes listobject from the above function and makes it a response object.
     Returns response object """
     response = []
+
     for i, res in enumerate(listobject):
         resp = {}
         resp["class"] = res[1]
