@@ -1,7 +1,7 @@
 import tensorflow
 from tensorflow.keras.applications.resnet50 import ResNet50
 from tensorflow.keras.applications.vgg16 import VGG16, decode_predictions
-from tensorflow.keras.applications.vgg16 import vgg16_preprocess_input
+from tensorflow.keras.applications.vgg16 import preprocess_input as vgg16_preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input as resnet50_preprocess_input
 from tensorflow.keras.applications.resnet50 import decode_predictions as decode_predictions2
