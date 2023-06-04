@@ -64,10 +64,15 @@ def resultsjson(listobject) -> list:
     Returns response object """
     response = []
 
-    for i, res in enumerate(listobject):
-        resp = {}
-        resp["class"] = res[1]
-        resp["confidence"] = f"{res[2]*100:0.2f} %"
-        response.append(resp)
+    for i, result in enumerate(listobject):
+        confidence_percentage = f"{result[2] * 100:0.2f} %"
+        classification = result[1]
+
+        returned_object = {
+            "class": classification,
+            "confidence": confidence_percentage
+        }
+
+        response.append(returned_object)
 
     return response
