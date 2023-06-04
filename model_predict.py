@@ -52,6 +52,7 @@ def transform(file) -> Image.Image:
     log.info(f'Resnet50 predicted:{resnet50_decode_predictions(resnet50_prediction, top=1)[0]}')
 
     # RS - Is decode_predictions2 not needed here? Is it just the decode_predictions from vgg16 that's needed?
+    # Seems not - looks like it works.
     log.info(f'Average prediction:{decode_predictions(averaged_predictions, top=1)[0]}')
 
     result = decode_predictions(averaged_predictions, 1)[0]
