@@ -2,3 +2,5 @@ tensorflow==2.8
 python-multipart
 fastapi
 uvicorn
+pillow
+protobuf==3.20.*
